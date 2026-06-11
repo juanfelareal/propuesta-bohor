@@ -903,33 +903,10 @@
     touchX = touchY = null;
   }, { passive: true });
 
-  // Brands marquee — wordmarks en blanco donde hay logo, texto donde no
-  const BRANDS = [
-    { name: 'Parchita', img: 'assets/brands/parchita.png' },
-    { name: 'Leonisa' },
-    { name: 'Cacao Hunters', img: 'assets/brands/cacaohunters.png', tall: true },
-    { name: 'Dulcey' },
-    { name: 'Kryolan', img: 'assets/brands/kryolan.svg' },
-    { name: 'Panavayu', ico: 'assets/brands/panavayu.png' },
-    { name: 'Barba Roja', ico: 'assets/brands/barbaroja.png' },
-    { name: 'Once' },
-    { name: 'Pachha' },
-    { name: 'Zorro y Jaguar' },
-    { name: 'Estruendo' },
-    { name: 'Cíclico', ico: 'assets/brands/ciclico.png' },
-    { name: 'Ukelele' },
-    { name: 'Adriza', ico: 'assets/brands/adriza.png' },
-    { name: 'Sandra Botero' },
-    { name: 'Gratu' },
-  ];
+  // Brands marquee — texto, como el landing
+  const BRANDS = ['Parchita','Leonisa','Cacao Hunters','Dulcey','Kryolan','Panavayu','Barba Roja','Once','Pachha','Zorro y Jaguar','Estruendo','Cíclico','Ukelele','Adriza','Sandra Botero','Gratu'];
   const track = document.getElementById('mq-track');
-  const items = BRANDS.map(b => {
-    let inner;
-    if (b.img) inner = `<img class="mq-logo${b.tall ? ' tall' : ''}" src="${b.img}" alt="${b.name}" />`;
-    else if (b.ico) inner = `<img class="mq-ico" src="${b.ico}" alt="" /><span>${b.name}</span>`;
-    else inner = `<span>${b.name}</span>`;
-    return `<span class="mq-item">${inner}<span class="ast">*</span></span>`;
-  }).join('');
+  const items = BRANDS.map(b => `<span class="mq-item"><span>${b}</span><span class="ast">*</span></span>`).join('');
   track.innerHTML = items + items;
 
   setTimeout(() => { if (hint) hint.style.opacity = '0'; hint.style.transition = 'opacity 1s'; }, 6000);
